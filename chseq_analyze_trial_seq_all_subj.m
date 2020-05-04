@@ -1,6 +1,8 @@
 % function chseq_analyze_trial_seq_all_subj
 
 % 2nd spatial decision human fMRI dataset
+datapath = 'F:\Dropbox\Sources\Repos\choice-seq-analysis\data\spatial_decision_human_2nd_dataset';
+
 subject_files = {
 '8989_choicehistory.xls'
 '8991_choicehistory.xls'
@@ -27,7 +29,7 @@ subject_files = {
 };
 
 for k = 1:length(subject_files),
-	O(k).out = chseq_analyze_trial_seq_one_subj(subject_files{k});
+	O(k).out = chseq_analyze_trial_seq_one_subj([datapath filesep subject_files{k}]);
 	
 	if 0
 	pos = get(gcf,'Position');

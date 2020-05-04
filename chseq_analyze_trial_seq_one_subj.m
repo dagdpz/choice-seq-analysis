@@ -3,6 +3,8 @@ function out = chseq_analyze_trial_seq_one_subj(xlsfilename)
 % out = chseq_analyze_trial_seq_one_subj('9444_choicehistory.xls')
 
 % 2nd spatial decision human fMRI dataset, this is just for the information, this variable is not used here
+datapath = 'F:\Dropbox\Sources\Repos\choice-seq-analysis\data\spatial_decision_human_2nd_dataset';
+
 subject_files = {
 '8989_choicehistory.xls'
 '8991_choicehistory.xls'
@@ -32,7 +34,7 @@ if isnumeric(xlsfilename)
 	xlsfilename = subject_files{xlsfilename};
 end
 
-out = chseq_convert_choicehistory_xls_2_seq(xlsfilename);
+out = chseq_convert_choicehistory_xls_2_seq([datapath filesep xlsfilename]);
 
 out.dataset_name		= xlsfilename;
 out.all_conditions		= [1 2 3 4 5 6];
