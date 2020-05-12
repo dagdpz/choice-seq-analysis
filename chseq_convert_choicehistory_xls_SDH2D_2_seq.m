@@ -1,6 +1,8 @@
-function out = chseq_convert_choicehistory_xls_2_seq(xlsfilename)
-% This function converts excel tables exported by Carsten for the "2nd spatial decision human fMRI dataset" to sequences
-% see chseq_analyze_trial_seq_one_subj.m
+function out = chseq_convert_choicehistory_xls_SDH2D_2_seq(xlsfilename)
+% This function converts excel tables exported by Carsten for the "Spatial decision human 2nd (fMRI) dataset" to sequences
+% See:
+% chseq_analyze_trial_seq_all_subj_SDH2D.m
+% chseq_analyze_trial_seq_one_subj_SDH2D.m
 
 d = dataset('XLSFile',xlsfilename);
 
