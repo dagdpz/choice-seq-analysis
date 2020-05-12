@@ -8,10 +8,10 @@ d = dataset('XLSFile',xlsfilename);
 
 % d = dataset('XLSFile','9436_choicehistory.xls');
 % we want a sequence like that:
-% 1 BC left
-% 2 BC right
-% 3 UC left
-% 4 UC right
+% 1 BC left (free choice)
+% 2 BC right (free choice)
+% 3 BI left
+% 4 BI right
 % 5 UI left
 % 6 UI right
 
