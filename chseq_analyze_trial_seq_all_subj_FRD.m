@@ -19,7 +19,7 @@ for i=1:length(compl_subjs)
 %      set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
 %      saveas(gcf,[char(subject) '.png'],'png');
 %     set(findall(gcf,'-property','FontSize'),'FontSize',10); % if you want to change all font sizes
-%     
+
     SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
 	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
 	SF_Ppc_g_LL(i)	= O(i).out.group_conditions(2).Ppc_g(1,1); % first L current, second L preceding
@@ -92,19 +92,6 @@ colormap cool
 % saveas(gcf,['subject_summary.png'],'png');
 
 %comparison of preceeding/next LR grouped
-
-% plotdata=NaN(11,4,2);
-% for i=1:length(compl_subjs)
-%     plotdata(i,1,1)=SFL_Ppc_L(i);
-%     plotdata(i,2,1)=SFR_Ppc_L(i);
-%     plotdata(i,3,1)=RFL_Ppc_L(i);
-%     plotdata(i,4,1)=RFR_Ppc_L(i);
-%     
-%     plotdata(i,1,2)=SFL_Ppc_R(i);
-%     plotdata(i,2,2)=SFR_Ppc_R(i);
-%     plotdata(i,3,2)=RFL_Ppc_R(i);
-%     plotdata(i,4,2)=RFR_Ppc_R(i);
-% end
     
 sigs=NaN(1,length(compl_subjs)*4);
 
@@ -118,27 +105,12 @@ x=[0.7,0.9,1.1,1.3,1.7,1.9,2.1,2.3,2.7,2.9,3.1,3.3,3.7,3.9,4.1,4.3,4.7,4.9,5.1,5
 ig_figure('Position',[100 100 1800 1000],'Name',sprintf('Free Reach Decision choice sequence, LR, %d subjects',length(compl_subjs)));
 
 subplot(2,1,1)
-% h1 = plotBarStackGroups(plotdata,cellstr(compl_subjs),{'SFL','SFR','RFL','RFR'}); hold on;
-% legend({'L' 'R'})
-%h1 = bar([SFL_Ppc_L; SFR_Ppc_L; RFL_Ppc_L;  RFR_Ppc_L]','grouped'); hold on;
+h1 = bar([SFL_Ppc_L; SFR_Ppc_L; RFL_Ppc_L;  RFR_Ppc_L]','grouped'); hold on;
 Ppc_sig = NaN(1,length(compl_subjs)*4); Ppc_sig(sigs<0.05) = 0.95; plot(x,Ppc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
-title('P(preceding|current)');
+title('P(preceding L |current)');
 colormap cool
 legend({'SFL' 'SFR' 'RFL' 'RFR'})
-
-% plotdata=NaN(11,4,2);
-% for i=1:length(compl_subjs)
-%     plotdata(i,1,1)=SFL_Pnc_L(i);
-%     plotdata(i,2,1)=SFR_Pnc_L(i);
-%     plotdata(i,3,1)=RFL_Pnc_L(i);
-%     plotdata(i,4,1)=RFR_Pnc_L(i);
-%     
-%     plotdata(i,1,2)=SFL_Pnc_R(i);
-%     plotdata(i,2,2)=SFR_Pnc_R(i);
-%     plotdata(i,3,2)=RFL_Pnc_R(i);
-%     plotdata(i,4,2)=RFR_Pnc_R(i);
-% end
 
 sigs=NaN(1,length(compl_subjs)*4);
 
@@ -153,12 +125,12 @@ subplot(2,1,2)
 h2 = bar([SFL_Pnc_L; SFR_Pnc_L; RFL_Pnc_L;  RFR_Pnc_L]','grouped'); hold on;
 Pnc_sig = NaN(1,length(compl_subjs)*4); Pnc_sig(sigs<0.05) = 0.95; plot(x,Pnc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
-title('P(next|current)');
+title('P(next L|current)');
 colormap cool
 legend({'SFL' 'SFR' 'RFL' 'RFR'})
 
 
-% pos=get(gcf,'Position');
-% set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
-% saveas(gcf,['subject_summary_LR.png'],'png');
+pos=get(gcf,'Position');
+set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
+saveas(gcf,['subject_summary_LR_sigL.png'],'png');
 
