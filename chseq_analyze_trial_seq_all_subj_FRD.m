@@ -19,51 +19,51 @@ for i=1:length(compl_subjs)
      set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
      saveas(gcf,[char(subject) '.png'],'png');
 %     set(findall(gcf,'-property','FontSize'),'FontSize',10); % if you want to change all font size
-%     SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
-%  	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
-% 	SF_Ppc_g_LL(i)	= O(i).out.group_conditions(2).Ppc_g(1,1); % first L current, second L preceding
-% 	SF_Ppc_g_LR(i)	= O(i).out.group_conditions(2).Ppc_g(1,2);
-% 	SF_Ppc_g_RL(i)	= O(i).out.group_conditions(2).Ppc_g(2,1);
-% 	SF_Ppc_g_RR(i)	= O(i).out.group_conditions(2).Ppc_g(2,2);
-% 	
-% 	SF_Ppc_g_P(i)	= O(i).out.group_conditions(2).Ppc_g_P;
-% 
-%     RF_prop_R(i)	= O(i).out.group_conditions(4).c2_prop;
-%  	RF_prop_L(i)	= 1 - O(i).out.group_conditions(4).c2_prop;
-% 	RF_Ppc_g_LL(i)	= O(i).out.group_conditions(4).Ppc_g(1,1); % first L current, second L preceding
-% 	RF_Ppc_g_LR(i)	= O(i).out.group_conditions(4).Ppc_g(1,2);
-% 	RF_Ppc_g_RL(i)	= O(i).out.group_conditions(4).Ppc_g(2,1);
-% 	RF_Ppc_g_RR(i)	= O(i).out.group_conditions(4).Ppc_g(2,2);
-% 	
-% 	RF_Ppc_g_P(i)	= O(i).out.group_conditions(4).Ppc_g_P;
-%     
-%     SFL_Ppc_L(i) = O(i).out.Ppc_LR(1,1);
-%     SFL_Ppc_R(i) = O(i).out.Ppc_LR(1,2);
-%     SFR_Ppc_L(i) = O(i).out.Ppc_LR(2,1);
-%     SFR_Ppc_R(i) = O(i).out.Ppc_LR(2,2);
-%     RFL_Ppc_L(i) = O(i).out.Ppc_LR(3,1);
-%     RFL_Ppc_R(i) = O(i).out.Ppc_LR(3,2);
-%     RFR_Ppc_L(i) = O(i).out.Ppc_LR(4,1);
-%     RFR_Ppc_R(i) = O(i).out.Ppc_LR(4,2);
-%     
-%     Ppc_LR_P_1(i)= O(i).out.Ppc_LR_P(1);
-%     Ppc_LR_P_2(i)= O(i).out.Ppc_LR_P(2);
-%     Ppc_LR_P_3(i)= O(i).out.Ppc_LR_P(3);
-%     Ppc_LR_P_4(i)= O(i).out.Ppc_LR_P(4);
-%         
-%     SFL_Pnc_L(i) = O(i).out.Pnc_LR(1,1);
-%     SFL_Pnc_R(i) = O(i).out.Pnc_LR(1,2);
-%     SFR_Pnc_L(i) = O(i).out.Pnc_LR(2,1);
-%     SFR_Pnc_R(i) = O(i).out.Pnc_LR(2,2);
-%     RFL_Pnc_L(i) = O(i).out.Pnc_LR(3,1);
-%     RFL_Pnc_R(i) = O(i).out.Pnc_LR(3,2);
-%     RFR_Pnc_L(i) = O(i).out.Pnc_LR(4,1);
-%     RFR_Pnc_R(i) = O(i).out.Pnc_LR(4,2);
-%     
-%     Pnc_LR_P_1(i)= O(i).out.Pnc_LR_P(1);
-%     Pnc_LR_P_2(i)= O(i).out.Pnc_LR_P(2);
-%     Pnc_LR_P_3(i)= O(i).out.Pnc_LR_P(3);
-%     Pnc_LR_P_4(i)= O(i).out.Pnc_LR_P(4);
+     SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
+  	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
+ 	SF_Ppc_g_LL(i)	= O(i).out.group_conditions(2).Ppc_g(1,1); % first L current, second L preceding
+ 	SF_Ppc_g_LR(i)	= O(i).out.group_conditions(2).Ppc_g(1,2);
+ 	SF_Ppc_g_RL(i)	= O(i).out.group_conditions(2).Ppc_g(2,1);
+ 	SF_Ppc_g_RR(i)	= O(i).out.group_conditions(2).Ppc_g(2,2);
+ 	
+ 	SF_Ppc_g_P(i)	= O(i).out.group_conditions(2).Ppc_g_P;
+ 
+     RF_prop_R(i)	= O(i).out.group_conditions(4).c2_prop;
+  	RF_prop_L(i)	= 1 - O(i).out.group_conditions(4).c2_prop;
+ 	RF_Ppc_g_LL(i)	= O(i).out.group_conditions(4).Ppc_g(1,1); % first L current, second L preceding
+ 	RF_Ppc_g_LR(i)	= O(i).out.group_conditions(4).Ppc_g(1,2);
+ 	RF_Ppc_g_RL(i)	= O(i).out.group_conditions(4).Ppc_g(2,1);
+ 	RF_Ppc_g_RR(i)	= O(i).out.group_conditions(4).Ppc_g(2,2);
+ 	
+ 	RF_Ppc_g_P(i)	= O(i).out.group_conditions(4).Ppc_g_P;
+     
+     SFL_Ppc_L(i) = O(i).out.Ppc_LR(1,1);
+     SFL_Ppc_R(i) = O(i).out.Ppc_LR(1,2);
+     SFR_Ppc_L(i) = O(i).out.Ppc_LR(2,1);
+     SFR_Ppc_R(i) = O(i).out.Ppc_LR(2,2);
+     RFL_Ppc_L(i) = O(i).out.Ppc_LR(3,1);
+     RFL_Ppc_R(i) = O(i).out.Ppc_LR(3,2);
+     RFR_Ppc_L(i) = O(i).out.Ppc_LR(4,1);
+     RFR_Ppc_R(i) = O(i).out.Ppc_LR(4,2);
+     
+     Ppc_LR_P_1(i)= O(i).out.Ppc_LR_P(1);
+     Ppc_LR_P_2(i)= O(i).out.Ppc_LR_P(2);
+     Ppc_LR_P_3(i)= O(i).out.Ppc_LR_P(3);
+     Ppc_LR_P_4(i)= O(i).out.Ppc_LR_P(4);
+         
+     SFL_Pnc_L(i) = O(i).out.Pnc_LR(1,1);
+     SFL_Pnc_R(i) = O(i).out.Pnc_LR(1,2);
+     SFR_Pnc_L(i) = O(i).out.Pnc_LR(2,1);
+     SFR_Pnc_R(i) = O(i).out.Pnc_LR(2,2);
+     RFL_Pnc_L(i) = O(i).out.Pnc_LR(3,1);
+     RFL_Pnc_R(i) = O(i).out.Pnc_LR(3,2);
+     RFR_Pnc_L(i) = O(i).out.Pnc_LR(4,1);
+     RFR_Pnc_R(i) = O(i).out.Pnc_LR(4,2);
+     
+     Pnc_LR_P_1(i)= O(i).out.Pnc_LR_P(1);
+     Pnc_LR_P_2(i)= O(i).out.Pnc_LR_P(2);
+     Pnc_LR_P_3(i)= O(i).out.Pnc_LR_P(3);
+     Pnc_LR_P_4(i)= O(i).out.Pnc_LR_P(4);
     
 end
 
