@@ -18,10 +18,9 @@ for i=1:length(compl_subjs)
 %      pos= get(gcf, 'Position');
 %      set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
 %      saveas(gcf,[char(subject) '.png'],'png');
-%     set(findall(gcf,'-property','FontSize'),'FontSize',10); % if you want to change all font sizes
-
+%     set(findall(gcf,'-property','FontSize'),'FontSize',10); % if you want to change all font size
     SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
-	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
+ 	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
 	SF_Ppc_g_LL(i)	= O(i).out.group_conditions(2).Ppc_g(1,1); % first L current, second L preceding
 	SF_Ppc_g_LR(i)	= O(i).out.group_conditions(2).Ppc_g(1,2);
 	SF_Ppc_g_RL(i)	= O(i).out.group_conditions(2).Ppc_g(2,1);
@@ -30,7 +29,7 @@ for i=1:length(compl_subjs)
 	SF_Ppc_g_P(i)	= O(i).out.group_conditions(2).Ppc_g_P;
 
     RF_prop_R(i)	= O(i).out.group_conditions(4).c2_prop;
-	RF_prop_L(i)	= 1 - O(i).out.group_conditions(4).c2_prop;
+ 	RF_prop_L(i)	= 1 - O(i).out.group_conditions(4).c2_prop;
 	RF_Ppc_g_LL(i)	= O(i).out.group_conditions(4).Ppc_g(1,1); % first L current, second L preceding
 	RF_Ppc_g_LR(i)	= O(i).out.group_conditions(4).Ppc_g(1,2);
 	RF_Ppc_g_RL(i)	= O(i).out.group_conditions(4).Ppc_g(2,1);
@@ -133,4 +132,12 @@ legend({'SFL' 'SFR' 'RFL' 'RFR'})
 pos=get(gcf,'Position');
 set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
 saveas(gcf,['subject_summary_LR_sigL.png'],'png');
+
+%get effect size (potential fMRI covariate)
+for k=1:length(compl_subjs)   
+    cohenwSFL(k)=sqrt(((O(k).out.group_conditions(2).Ppc_g(1)-SF_prop_L(k))^2)/(SF_prop_L(k))+((O(k).out.group_conditions(2).Ppc_g(2)-SF_prop_R(k))^2)/(SF_prop_R(k)));
+    cohenwSFR(k)=sqrt(((O(k).out.group_conditions(2).Ppc_g(3)-SF_prop_L(k))^2)/(SF_prop_L(k))+((O(k).out.group_conditions(2).Ppc_g(4)-SF_prop_R(k))^2)/(SF_prop_R(k)));
+    cohenwRFL(k)=sqrt(((O(k).out.group_conditions(4).Ppc_g(1)-RF_prop_L(k))^2)/(RF_prop_L(k))+((O(k).out.group_conditions(4).Ppc_g(2)-RF_prop_R(k))^2)/(RF_prop_R(k)));
+    cohenwRFR(k)=sqrt(((O(k).out.group_conditions(4).Ppc_g(3)-RF_prop_L(k))^2)/(RF_prop_L(k))+((O(k).out.group_conditions(4).Ppc_g(4)-RF_prop_R(k))^2)/(RF_prop_R(k)));
+end
 
