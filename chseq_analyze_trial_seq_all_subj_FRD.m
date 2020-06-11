@@ -14,12 +14,12 @@ for i=1:length(compl_subjs)
     subjdata=data(data.subj==subject,:);
     O(i).out = chseq_analyze_trial_seq_one_subj_FRD(subjdata);
    
-     set(gcf,'NumberTitle', 'off', 'Name', char(subject))
-     pos= get(gcf, 'Position');
-     set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
-     saveas(gcf,[char(subject) '.png'],'png');
+%      set(gcf,'NumberTitle', 'off', 'Name', char(subject))
+%      pos= get(gcf, 'Position');
+%      set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
+%      saveas(gcf,[char(subject) '.png'],'png');
 %     set(findall(gcf,'-property','FontSize'),'FontSize',10); % if you want to change all font size
-     SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
+    SF_prop_R(i)	= O(i).out.group_conditions(2).c2_prop;
   	SF_prop_L(i)	= 1 - O(i).out.group_conditions(2).c2_prop;
  	SF_Ppc_g_LL(i)	= O(i).out.group_conditions(2).Ppc_g(1,1); % first L current, second L preceding
  	SF_Ppc_g_LR(i)	= O(i).out.group_conditions(2).Ppc_g(1,2);
@@ -28,7 +28,7 @@ for i=1:length(compl_subjs)
  	
  	SF_Ppc_g_P(i)	= O(i).out.group_conditions(2).Ppc_g_P;
  
-     RF_prop_R(i)	= O(i).out.group_conditions(4).c2_prop;
+    RF_prop_R(i)	= O(i).out.group_conditions(4).c2_prop;
   	RF_prop_L(i)	= 1 - O(i).out.group_conditions(4).c2_prop;
  	RF_Ppc_g_LL(i)	= O(i).out.group_conditions(4).Ppc_g(1,1); % first L current, second L preceding
  	RF_Ppc_g_LR(i)	= O(i).out.group_conditions(4).Ppc_g(1,2);
@@ -36,6 +36,24 @@ for i=1:length(compl_subjs)
  	RF_Ppc_g_RR(i)	= O(i).out.group_conditions(4).Ppc_g(2,2);
  	
  	RF_Ppc_g_P(i)	= O(i).out.group_conditions(4).Ppc_g_P;
+    
+    SF_prop_R_suc(i)	= O(i).out.group_conditions(2).c2_prop_suc;
+  	SF_prop_L_suc(i)	= 1 - O(i).out.group_conditions(2).c2_prop_suc;
+ 	SF_Ppc_g_LL_suc(i)	= O(i).out.group_conditions(2).Ppc_g_suc(1,1); % first L current, second L preceding
+ 	SF_Ppc_g_LR_suc(i)	= O(i).out.group_conditions(2).Ppc_g_suc(1,2);
+ 	SF_Ppc_g_RL_suc(i)	= O(i).out.group_conditions(2).Ppc_g_suc(2,1);
+ 	SF_Ppc_g_RR_suc(i)	= O(i).out.group_conditions(2).Ppc_g_suc(2,2);
+ 	
+ 	SF_Ppc_g_P_suc(i)	= O(i).out.group_conditions(2).Ppc_g_P_suc;
+ 
+    RF_prop_R_suc(i)	= O(i).out.group_conditions(4).c2_prop_suc;
+  	RF_prop_L_suc(i)	= 1 - O(i).out.group_conditions(4).c2_prop_suc;
+ 	RF_Ppc_g_LL_suc(i)	= O(i).out.group_conditions(4).Ppc_g_suc(1,1); % first L current, second L preceding
+ 	RF_Ppc_g_LR_suc(i)	= O(i).out.group_conditions(4).Ppc_g_suc(1,2);
+ 	RF_Ppc_g_RL_suc(i)	= O(i).out.group_conditions(4).Ppc_g_suc(2,1);
+ 	RF_Ppc_g_RR_suc(i)	= O(i).out.group_conditions(4).Ppc_g_suc(2,2);
+ 	
+ 	RF_Ppc_g_P_suc(i)	= O(i).out.group_conditions(4).Ppc_g_P_suc;
      
      SFL_Ppc_L(i) = O(i).out.Ppc_LR(1,1);
      SFL_Ppc_R(i) = O(i).out.Ppc_LR(1,2);
@@ -72,7 +90,7 @@ ig_figure('Position',[100 100 1800 1000],'Name',sprintf('Free Reach Decision cho
 
 subplot(2,1,1)
 h1 = bar([SF_prop_L; SF_Ppc_g_LL; SF_Ppc_g_RL; SF_prop_R; SF_Ppc_g_LR; SF_Ppc_g_RR]','grouped'); hold on;
-Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(SF_Ppc_g_P<0.05) = 0.95; plot(Ppc_sig,'k*');
+Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(SF_Ppc_g_P<0.025) = 0.95; plot(Ppc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
 title('Free saccade(preceding|current)');
 colormap cool
@@ -81,7 +99,7 @@ legend({'prop L' 'LL' 'RL' 'prop R' 'LR' 'RR'})
 
 subplot(2,1,2)
 h2 = bar([RF_prop_L; RF_Ppc_g_LL; RF_Ppc_g_RL; RF_prop_R; RF_Ppc_g_LR; RF_Ppc_g_RR]','grouped'); hold on;
-Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(RF_Ppc_g_P<0.05) = 0.95; plot(Ppc_sig,'k*');
+Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(RF_Ppc_g_P<0.025) = 0.95; plot(Ppc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
 title('Free reach(preceding|current)');
 colormap cool
@@ -89,6 +107,29 @@ colormap cool
 % pos=get(gcf,'Position');
 % set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
 % saveas(gcf,['subject_summary.png'],'png');
+
+%successive sequence by effector
+ig_figure('Position',[100 100 1800 1000],'Name',sprintf('Free Reach Decision successive choice sequence, %d subjects',length(compl_subjs)));
+
+subplot(2,1,1)
+h1 = bar([SF_prop_L_suc; SF_Ppc_g_LL_suc; SF_Ppc_g_RL_suc; SF_prop_R_suc; SF_Ppc_g_LR_suc; SF_Ppc_g_RR_suc]','grouped'); hold on;
+Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(SF_Ppc_g_P_suc<0.025) = 1; plot(Ppc_sig,'k*');
+set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
+title('Successive free saccade(preceding|current)');
+colormap cool
+legend({'prop L' 'LL' 'RL' 'prop R' 'LR' 'RR'})
+
+
+subplot(2,1,2)
+h2 = bar([RF_prop_L_suc; RF_Ppc_g_LL_suc; RF_Ppc_g_RL_suc; RF_prop_R_suc; RF_Ppc_g_LR_suc; RF_Ppc_g_RR_suc]','grouped'); hold on;
+Ppc_sig = NaN(1,length(compl_subjs)); Ppc_sig(RF_Ppc_g_P_suc<0.025) = 1; plot(Ppc_sig,'k*');
+set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
+title('Successive free reach(preceding|current)');
+colormap cool
+
+% pos=get(gcf,'Position');
+% set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
+% saveas(gcf,['succ_subject_summary.png'],'png');
 
 %comparison of preceeding/next LR grouped
     
@@ -105,7 +146,7 @@ ig_figure('Position',[100 100 1800 1000],'Name',sprintf('Free Reach Decision cho
 
 subplot(2,1,1)
 h1 = bar([SFL_Ppc_L; SFR_Ppc_L; RFL_Ppc_L;  RFR_Ppc_L]','grouped'); hold on;
-Ppc_sig = NaN(1,length(compl_subjs)*4); Ppc_sig(sigs<0.05) = 0.95; plot(x,Ppc_sig,'k*');
+Ppc_sig = NaN(1,length(compl_subjs)*4); Ppc_sig(sigs<0.00625) = 0.95; plot(x,Ppc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
 title('P(preceding L |current)');
 colormap cool
@@ -122,16 +163,16 @@ end
 
 subplot(2,1,2)
 h2 = bar([SFL_Pnc_L; SFR_Pnc_L; RFL_Pnc_L;  RFR_Pnc_L]','grouped'); hold on;
-Pnc_sig = NaN(1,length(compl_subjs)*4); Pnc_sig(sigs<0.05) = 0.95; plot(x,Pnc_sig,'k*');
+Pnc_sig = NaN(1,length(compl_subjs)*4); Pnc_sig(sigs<0.00625) = 0.95; plot(x,Pnc_sig,'k*');
 set(gca,'Xtick',[1:length(compl_subjs)],'XtickLabel',cellstr(compl_subjs));
 title('P(next L|current)');
 colormap cool
 legend({'SFL' 'SFR' 'RFL' 'RFR'})
 
 
-pos=get(gcf,'Position');
-set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
-saveas(gcf,['subject_summary_LR_sigL.png'],'png');
+% pos=get(gcf,'Position');
+% set(gcf,'PaperPositionMode','Auto','PaperType','A4','PaperUnits','points','PaperSize',[pos(3) pos(4)]);
+% saveas(gcf,['subject_summary_LR_sigL.png'],'png');
 
 %get effect size (potential fMRI covariate)
 %Cohen's w - doesn't match up with significances at all; not sure if that's
